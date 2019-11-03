@@ -2,25 +2,40 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model{
-    public function auth ( $hash ) {
-        $ret = $this->db->select('username')
+    public function getUserId( $hash )
+    {
+        $ret = $this->db->select('user_id')
                         ->from('user')
                         ->where('password', $hash)
                         ->get()->result_array();
         if ( $ret != NULL ) {
-            return true;
+            return $ret[0]['user_id'];
+        } else {
+            return NULL;
+        }
+    }
+
+    public function getUserData($id)
+    {
+        $ret = $this->db->select('user_id, username, role')
+                        ->from('user')
+                        ->where('user_id', $id)
+                        ->get()->result_array();
+        if ( $ret != NULL ) {
+            return $ret[0];
         } else {
             return false;
         }
     }
 
-    public function getRole ( $id ) {
+    public function getRole( $id )
+    {
         $ret = $this->db->select('role')
                         ->from('user')
                         ->where('id', $id)
                         ->get()->result_array();
         if ( $ret != NULL ) {
-            return $ret['role'][0];
+            return $ret[0]['role'];
         } else {
             return NULL;
         }
