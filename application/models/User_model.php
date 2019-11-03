@@ -32,7 +32,7 @@ class User_model extends CI_Model{
     {
         $ret = $this->db->select('role')
                         ->from('user')
-                        ->where('id', $id)
+                        ->where('user_id', $id)
                         ->get()->result_array();
         if ( $ret != NULL ) {
             return $ret[0]['role'];
@@ -41,18 +41,18 @@ class User_model extends CI_Model{
         }
     }
 
-    public function getProfileData ( $id ) {
-        $role = $this->getRole( $id );
+    // public function getProfileData ( $id ) {
+    //     $role = $this->getRole( $id );
 
-        $ret = $this->db->select()
-                        ->from($role)
-                        ->where('id', $id)
-                        ->get()->result_array();
-        if ( $ret != NULL ) {
-            return $ret;
-        } else {
-            return NULL;
-        }                
-    }
+    //     $ret = $this->db->select()
+    //                     ->from($role)
+    //                     ->where('id', $id)
+    //                     ->get()->result_array();
+    //     if ( $ret != NULL ) {
+    //         return $ret;
+    //     } else {
+    //         return NULL;
+    //     }                
+    // }
 
 }

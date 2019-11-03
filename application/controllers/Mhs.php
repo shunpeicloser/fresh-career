@@ -13,6 +13,16 @@ class Mhs extends CI_Controller {
         if($id != $this->session->tempdata('user_id')){
             redirect('mhs','refresh');
         }
-        $this->load->view('mhs/home');
+
+        $this->load->model('mhs_model', 'mhs');
+        $data = NULL;
+
+        //load mhs profile data
+        $data['profile'] = $this->mhs->getProfileData($id);
+
+        //load mhs project list
+        $data['project-list'] = $this->mhs->getProjectList($id);
+
+        $this->load->view('mhs/home', ['data' => $data]);
     }
 }
