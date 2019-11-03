@@ -25,4 +25,13 @@ class Ptk extends CI_Controller {
 
         $this->load->view('ptk/home', ['data' => $data]);
     }
+
+    public function projectdetail($project_id)
+    {
+        $this->load->model('project_model', 'project');
+        $data = $this->project->getProjectData($project_id);
+
+        $this->load->view('ptk/project_detail', ['data' => $data]);
+
+    }
 }
