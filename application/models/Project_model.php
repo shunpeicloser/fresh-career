@@ -2,49 +2,25 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Project_model extends CI_Model {
-    public function getProjectList () {
-        return $this->db->select('project_id, description, budget, tag')
-                        ->from('project')
-                        ->get()->result_array();
-    }
+    public function getProjectData($project_id)
+    {
+        $project = $this->select('ptk.user_id, ptk.nama, project.*')
+        ->from('project')
+        ->join('ptk', 'project.user_id = ptk.user_id')
+        ->where('project_id', $project_id)
+        ->get()->result_array();
 
-    public function getProjectSpecification ($project_id) {
-        return $this->db->select()
-                        ->from('project')
-                        ->where('project_id'. $project_id)
-                        ->get()->result_array();
-    }
+        $bidder = $this->select('project_bidder.*, mhs.user_id, mhs.nama')
+        ->from('project_bidder')
+        ->join('mhs', 'project_bidder.user_id = mhs.user_id')
+        ->where('project_id', $project_id)
+        ->get()->result_array();
 
-    public function getProjectListByUser ( $id ) {
-        $this->load->model('user');
-        $role = $this->user->getRole( $id );
-        if ( $role == 'mhs' ) {
-            return $this->getMhsProjectList( $id );
+        if($project != NULL){
+            $ret = ['project' => $project[0], 'bidder' => $bidder];
+            return $ret;
         } else {
-            return $this->getPtkProjectList( $id );
+            return NULL;
         }
     }
-
-    public function getMhsProjectList ( $id ) {
-        return $this->db->select()
-                        ->from('project')
-                        ->where('project_id', $id)
-                        ->get()->result_array();
-    }
-
-    public function getPtkProjectList ( $id ) {
-        return $this->db->select()
-                        ->from('project')
-                        ->where('project_id', $id)
-                        ->get()->result_array();
-    }
-
-    public function getProjectBidder ( $project_id ) {
-        return $this->db->select()
-                        ->from('project_bidder')
-                        ->where('project_id', $project_id)
-                        ->get()->result_array();
-    }
-
-
 }

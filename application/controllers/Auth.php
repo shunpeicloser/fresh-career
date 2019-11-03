@@ -7,7 +7,6 @@ class Auth extends CI_Controller {
     {
         if( $this->session->tempdata() != NULL ){
             $this->_roleredirect($this->session->tempdata('role'));
-            die();
         } else {
             $this->load->view('auth/login_view');
         }
@@ -21,7 +20,7 @@ class Auth extends CI_Controller {
     private function _authCredential($username, $password)
     {
         $this->load->model('user_model', 'user');
-        $id = $this->user->getUserId($password); //note: masih raw
+        $id = $this->user->getUserId($username, $password); //note: masih raw
         if($id != NULL){
             return $this->user->getUserData($id);
         } else {

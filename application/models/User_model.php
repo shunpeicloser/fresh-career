@@ -2,10 +2,11 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model{
-    public function getUserId( $hash )
+    public function getUserId( $username, $hash )
     {
         $ret = $this->db->select('user_id')
                         ->from('user')
+                        ->where('username', $username)
                         ->where('password', $hash)
                         ->get()->result_array();
         if ( $ret != NULL ) {

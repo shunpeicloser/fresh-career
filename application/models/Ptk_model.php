@@ -3,7 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Ptk_model extends CI_Model{
 
-    public function getProfileData ( $id ) {
+    public function getProfileData ( $id )
+    {
         $ret = $this->db->select()
                         ->from('ptk')
                         ->where('user_id', $id)
@@ -15,7 +16,8 @@ class Ptk_model extends CI_Model{
         }
     }
 
-    public function getProjectList ( $user_id ) {
+    public function getProjectList ( $user_id )
+    {
         $ret = $this->db->select('project.project_id, project.project_name, project.budget, project.project_name')
                         ->from('project')
                         ->where('project.user_id', $user_id)
@@ -25,6 +27,11 @@ class Ptk_model extends CI_Model{
         } else {
             return NULL;
         }
+    }
+
+    public function getProjectData($project_id)
+    {
+        
     }
 
 }
