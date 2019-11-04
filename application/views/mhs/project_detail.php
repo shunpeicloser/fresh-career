@@ -1,0 +1,2 @@
+mhs - project detail <br/>
+<?= var_dump($data); ?>

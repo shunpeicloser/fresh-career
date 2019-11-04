@@ -1,115 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V5</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fresh Career - Login</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+    body {
+        color: #999;
+		background: #f5f5f5;
+		font-family: 'Varela Round', sans-serif;
+	}
+	.form-control {
+		box-shadow: none;
+		border-color: #ddd;
+	}
+	.form-control:focus {
+		border-color: #4aba70; 
+	}
+	.login-form {
+        width: 350px;
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+    .login-form form {
+        color: #434343;
+		border-radius: 1px;
+    	margin-bottom: 15px;
+        background: #fff;
+		border: 1px solid #f3f3f3;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+	}
+	.login-form h4 {
+		text-align: center;
+		font-size: 22px;
+        margin-bottom: 20px;
+	}
+    .login-form .avatar {
+        color: #fff;
+		margin: 0 auto 30px;
+        text-align: center;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		z-index: 9;
+		background: #4aba70;
+		padding: 15px;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+    .login-form .avatar i {
+        font-size: 62px;
+    }
+    .login-form .form-group {
+        margin-bottom: 20px;
+    }
+	.login-form .form-control, .login-form .btn {
+		min-height: 40px;
+		border-radius: 2px; 
+        transition: all 0.5s;
+	}
+	.login-form .close {
+        position: absolute;
+		top: 15px;
+		right: 15px;
+	}
+	.login-form .btn {
+		background: #4aba70;
+		border: none;
+		line-height: normal;
+	}
+	.login-form .btn:hover, .login-form .btn:focus {
+		background: #42ae68;
+	}
+    .login-form .checkbox-inline {
+        float: left;
+    }
+    .login-form input[type="checkbox"] {
+        margin-top: 2px;
+    }
+    .login-form .forgot-link {
+        float: right;
+    }
+    .login-form .small {
+        font-size: 13px;
+    }
+    .login-form a {
+        color: #4aba70;
+    }
+</style>
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-				<form class="login100-form validate-form flex-sb flex-w" method="post" action="<?= base_url('auth/login'); ?>">
-					<span class="login100-form-title p-b-53">
-						Sign In With
-					</span>
-
-					<a href="#" class="btn-face m-b-20">
-						<i class="fa fa-facebook-official"></i>
-						Facebook
-					</a>
-
-					<a href="#" class="btn-google m-b-20">
-						<img src="images/icons/icon-google.png" alt="GOOGLE">
-						Google
-					</a>
-					
-					<div class="p-t-31 p-b-9">
-						<span class="txt1">
-							Username
-						</span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Username is required">
-						<input class="input100" type="text" name="username" >
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="p-t-13 p-b-9">
-						<span class="txt1">
-							Password
-						</span>
-
-						<a href="#" class="txt2 bo1 m-l-5">
-							Forgot?
-						</a>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" >
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn">
-							Sign In
-						</button>
-					</div>
-
-					<div class="w-full text-center p-t-55">
-						<span class="txt2">
-							Not a member?
-						</span>
-
-						<a href="#" class="txt2 bo1">
-							Sign up now
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-
-	<div id="dropDownSelect1"></div>
-	
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
+<div class="login-form">    
+    <form action="<?= base_url('auth/login') ?>" method="post">
+		<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+    	<h4 class="modal-title">Login to Your Account</h4>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" name="username" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" name="password" required="required">
+        </div>
+        <!-- <div class="form-group small clearfix">
+            <label class="checkbox-inline"><input type="checkbox"> Remember me</label>
+            <a href="#" class="forgot-link">Forgot Password?</a>
+        </div>  -->
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">              
+    </form>			
+    <!-- <div class="text-center small">Don't have an account? <a href="#">Sign up</a></div> -->
+</div>
 </body>
-</html>
+</html>                                		                            

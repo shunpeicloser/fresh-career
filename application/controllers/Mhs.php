@@ -25,4 +25,13 @@ class Mhs extends CI_Controller {
 
         $this->load->view('mhs/home', ['data' => $data]);
     }
+
+    public function projectdetail($project_id)
+    {
+        $this->load->model('project_model', 'project');
+        $data = $this->project->getProjectData($project_id);
+
+        $this->load->view('mhs/project_detail', ['data' => $data]);
+    }
+
 }
