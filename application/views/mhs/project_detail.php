@@ -6,7 +6,6 @@
 </div>
 
 <div class="x_panel">
-<?php var_dump($data); ?>
 <div class="x_title">
     <h2><strong>Stackholder</strong></h2>
     <div class="clearfix"></div>

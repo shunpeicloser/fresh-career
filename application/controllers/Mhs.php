@@ -28,6 +28,24 @@ class Mhs extends CI_Controller {
         $this->load->view('mhs/home', ['data' => $data]);
     }
 
+    public function profile($user_id)
+    {
+        if($user_id != $this->session->tempdata('user_id')){
+            redirect('mhs','refresh');
+        }
+
+        $this->load->model('mhs_model', 'mhs');
+
+        //load mhs profile data
+        $data['profile'] = $this->mhs->getProfileData($this->session->tempdata('user_id'));
+
+        //load page content
+        $data['contents'] = APPPATH . "views/mhs/mhs_profile.php";
+
+        $this->load->view('mhs/home', ['data' => $data]);
+
+    }
+
     public function projectdetail($project_id)
     {
         $this->load->model('project_model', 'project');
