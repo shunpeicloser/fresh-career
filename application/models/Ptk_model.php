@@ -18,7 +18,7 @@ class Ptk_model extends CI_Model{
 
     public function getProjectList ( $user_id )
     {
-        $ret = $this->db->select('project.project_id, project.project_name, project.budget, project.project_name')
+        $ret = $this->db->select('project.project_id, project.project_name, project.budget, project.project_name, project.project_status')
                         ->from('project')
                         ->where('project.user_id', $user_id)
                         ->get()->result_array();

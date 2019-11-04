@@ -73,4 +73,10 @@ class Project_model extends CI_Model {
         }
     }
 
+    public function saveProjectSpecification($data)
+    {
+        $this->db->where('project_id', $data['project_id'])
+                    ->update('project', $data);
+    }
+
 }
