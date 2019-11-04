@@ -6,23 +6,23 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="<?= base_url('home') ?>" class="site_title"></i><img src="<?= base_url('assets/production/images/icon.png') ?>" style="width:35px;"><span> Sitemap</span></a>
+            <a href="<?= base_url('home') ?>" class="site_title"><img src="<?= base_url('assets/production/images/icon.png') ?>" style="width:35px;"> <span>E-Laporan</span></a>
           </div>
 
           <div class="clearfix"></div>
 
           <!-- menu profile quick info -->
-          <!-- <div class="profile clearfix">
-            <div class="profile_pic">
+          <div class="profile clearfix">
+            <!-- <div class="profile_pic">
               <img src="<?= base_url('assets/') ?>production/images/img.jpg" alt="..." class="img-circle profile_img">
-            </div>
-          </div> -->
+            </div> -->
+          </div>
           <!-- /menu profile quick info -->
 
           <br />
 
           <!-- sidebar menu -->
-          <?php $this->load->view('template/sidebar_opd') ?>
+          <?php $this->load->view('template/sidebar_admin') ?>
           <!-- /sidebar menu -->
 
 
@@ -40,7 +40,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="<?= base_url('assets/') ?>production/images/img.jpg" alt=""><?= strtoupper($data['profile']['nama']); ?>
+                  <img src="<?= base_url('assets/') ?>production/images/img.jpg" alt=""><?= $data['user']['nama_opd'] ?>
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -55,9 +55,10 @@
 
       <!-- page content -->
       <div class="right_col" role="main">
-        <?php //if (isset($data['contents'])) {
+        <?= $this->session->flashdata('message'); ?>
+        <?php if (isset($data['contents'])) {
           require $data['contents'];
-        //} ?>
+        } ?>
       </div>
       <!-- /page content -->
 
