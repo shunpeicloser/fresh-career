@@ -2,7 +2,7 @@
   <div class="menu_section">
     <ul class="nav side-menu">
       <li><a href="<?= base_url('mhs') ?>"><i class="fa fa-home"></i>Home</a></li>
-      <li><a><i class="fa fa-home"></i> Fitur Lain</span></a>
+      <li><a href="<?= base_url('mhs/projectlist') ?>"><i class="fa fa-search"></i> Search for Project </span></a>
       </li>
     </ul>
   </div>

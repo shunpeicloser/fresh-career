@@ -1,46 +1,60 @@
 <div class="clearfix"></div>
 
+<div class="x_title">
+    <h1><?php echo $data['project']['project_name'] ?></h1>
+    <div class="clearfix"></div>
+</div>
+
+<div class="x_panel">
+<?php var_dump($data); ?>
+<div class="x_title">
+    <h2><strong>Stackholder</strong></h2>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+    <?php echo $data['project']['nama'] ?> <br/>
+</div>
+<div class="x_title">
+    <div class="clearfix"></div>
+</div>
+
+
+<div class="x_title">
+    <h2><strong>Budget</strong></h2>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+    <?php echo $data['project']['budget'] ?> <br/>
+</div>
+<div class="x_title">
+    <div class="clearfix"></div>
+</div>
+
+<div class="x_title">
+    <h2><strong>Description</strong></h2>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+    <?php echo $data['project']['description'] ?> <br/>
+</div>
+<div class="x_title">
+    <div class="clearfix"></div>
+</div>
+</div>
+
+<div class="x_title">
+    <h1>Bidder</h1>
+    <div class="clearfix"></div>
+</div>
+
 <div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="x_panel">
-    <div class="x_title">
-      <h1><?php echo $data['project']['project_name'] ?></h1>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class="x_content">
-        <div class="x_title">
-            <h2>Stackholder</h1>
-            <div class="clearfix"></div>
-        </div>
-        <div class="x_content">
-            <?php echo $data['project']['nama'] ?> <br/>
-        </div>
-        <!-- <div class="clearfix"></div> -->
-        <div class="x_title">
-            <h2>Budget</h1>
-            <div class="clearfix"></div>
-        </div>
-        <div class="x_content">
-            <?php echo $data['project']['budget'] ?> <br/>
-        </div>
-        <div class="x_title">
-            <h2>Description</h1>
-            <div class="clearfix"></div>
-        </div>
-        <div class="x_content">
-            <?php echo $data['project']['description'] ?> <br/>
-        </div>
-    </div>
-
-  </div>
-
   <div class="x_panel">
     <div class="x_title">
         <h2>My Bid</h2>
         <div class="clearfix"></div>
     </div>
         <div class="x_content">
-            <form data-parsley-validate class="form-horizontal form-label-left" action='<?php echo base_url("mhs/bid/$data[project][project_id]"); ?>' method="post">
+            <form data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url("mhs/bid/").$data['project']['project_id']; ?>" method="post">
                 <div class="form-group">
                     <label for="bid" class="control-label col-md-3 col-sm-3 col-xs-12">Bid Value</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">

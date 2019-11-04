@@ -1,60 +1,33 @@
 <div class="clearfix"></div>
-
 <div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="x_panel">
     <div class="x_title">
-      <h2>Project List</h2>
-      <div class="clearfix"></div>
+        <h1>Available Project</h1>
+        <div class="clearfix"></div>
     </div>
-
-    <div class="x_content">
-      <div class="table-responsive">
-        <table class="table table-striped jambo_table bulk_action">
-          <thead>
-            <tr class="headings">
-              <th class="column-title">Project ID</th>
-              <th class="column-title">Project Name</th>
-              <th class="column-title">Project Budget</th>
-              <th class="column-title">Your Bid</th>
-              <th class="column-title">Status</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <?php
-            if (!isset($data['project-list']) || sizeof($data['project-list']) <= 0) {
-              echo "<tr class='even pointer'>
-                                      <td>No Project</td>
-                                    </tr>";
+        <?php
+            if(!isset($data['project-list']) || $data['project-list'] == NULL){
+                echo "<h2>No available project</h2>";
             } else {
-              $counter = "even pointer";
-              foreach ($data['project-list'] as $datalaporan) {
-                $status = ($datalaporan['bid_status'] == 0 ? 'belum diterima':'diterima');
-                echo "<tr class=$counter>
-                        <td>$datalaporan[project_id]</td>
-                        <td>
-                        <a href=" . base_url("mhs/projectdetail/$datalaporan[project_id]") . ">
-                        $datalaporan[project_name]
-                        </a>
-                        </td>
-                        <td>$datalaporan[budget]</td>
-                        <td>$datalaporan[bid_value]</td>
-                        <td>$status</td>
-                    </tr>";
-                if ($counter == "even pointer") $counter = "odd pointer";
-                else $counter = "even pointer";
-              }
-            }
-            ?>
+                foreach($data['project-list'] as $d) {
+        ?>
+    <a href="<?php echo base_url('mhs/projectdetail') . "/$d[project_id]" ?>">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2><strong><?php echo $d['project_name'] ?></strong></h2>
+            <div class="clearfix"></div>
+        </div>
 
-          </tbody>
-        </table>
-      </div>
-
+        <div class="x_content">
+            <strong>Stakeholder</strong> <?php echo $d['nama'] ?> <br/>
+            <strong>Budget</strong> <?php echo $d['budget'] ?> <br/>
+        </div>
 
     </div>
-  </div>
-</div>
-</div>
-</div>
+    </a>
+
+        <?php
+                }
+            }
+        ?>
+
 </div>

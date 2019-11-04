@@ -2,6 +2,17 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Project_model extends CI_Model {
+
+    public function getProjectList()
+    {
+        $ret = $this->db->select('project.*, ptk.user_id, ptk.nama')
+                        ->from('project')
+                        ->join('ptk', 'project.user_id = ptk.user_id')
+                        ->where('project_status', '0')
+                        ->get()->result_array();
+        return $ret;
+    }
+
     public function getProjectData($project_id, $bidder_id=0)
     {
         $project = $this->db->select('ptk.user_id, ptk.nama, project.*')
@@ -41,4 +52,25 @@ class Project_model extends CI_Model {
             return NULL;
         }
     }
+
+    public function addBid($data)
+    {
+        $flag = $this->db->select('user_id')
+                        ->from('project_bidder')
+                        ->where('user_id', $data['user_id'])
+                        ->where('project_id', $data['project_id'])
+                        ->get()->result_array();
+        if($data['bid_value'] == '' && $data['comment'] == ''){
+            $this->db->where('user_id', $data['user_id'])
+                    ->where('project_id', $data['project_id'])
+                    ->delete('project_bidder');
+        } else if($flag == NULL){
+            $this->db->insert('project_bidder', $data);
+        } else {
+            $this->db->where('user_id', $data['user_id'])
+                    ->where('project_id', $data['project_id'])
+                    ->update('project_bidder', $data);
+        }
+    }
+
 }
