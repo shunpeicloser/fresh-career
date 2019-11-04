@@ -39,6 +39,9 @@ class Mhs extends CI_Controller {
         //load mhs profile data
         $data['profile'] = $this->mhs->getProfileData($this->session->tempdata('user_id'));
 
+        //load mhs project list
+        $data['project-list'] = $this->mhs->getProjectList($user_id);
+
         //load page content
         $data['contents'] = APPPATH . "views/mhs/mhs_profile.php";
 
