@@ -40,7 +40,7 @@ class Auth extends CI_Controller {
     public function login()
     {
         $input = $this->input->post();
-        $userdata = $this->_authCredential($input['username'], $input['password']);
+        $userdata = $this->_authCredential($input['username'], md5( $input['password']) );
         if( $userdata != NULL ){
             $this->_createSession($userdata);
         }
