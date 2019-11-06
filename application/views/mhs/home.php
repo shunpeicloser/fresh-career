@@ -41,7 +41,7 @@
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                   <!-- <img src="<?= base_url('assets/') ?>production/images/img.jpg" alt=""> -->
-                  <?= strtoupper($data['profile']['nama']); ?>
+                  <?php echo strtoupper($data['profile']['nama']) . " (Rp. ". $data['profile']['saldo'].")"; ?>
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">

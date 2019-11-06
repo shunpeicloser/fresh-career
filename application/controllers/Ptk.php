@@ -76,4 +76,42 @@ class Ptk extends CI_Controller {
         $this->projectdetail($project_id);
     }
 
+    public function deletechoosen($project_id, $user_id)
+    {
+        $this->load->model('ptk_model', 'ptk');
+        $this->ptk->deleteChoosen($project_id, $user_id);
+        $this->projectdetail($project_id);
+    }
+
+    public function addchoosen($project_id, $user_id)
+    {
+        $this->load->model('ptk_model', 'ptk');
+        $this->ptk->chooseBidder($project_id, $user_id);
+        $this->projectdetail($project_id);
+    }
+
+    public function addbalance($user_id)
+    {
+        if($user_id != $this->session->tempdata('user_id')){
+            redirect('ptk','refresh');
+        }
+        
+        $this->load->model('ptk_model', 'ptk');
+        $this->ptk->addBalance($user_id, $this->input->post('saldo'));
+        $this->tambahsaldo();
+    }
+
+    public function tambahsaldo()
+    {
+        $this->load->model('ptk_model', 'ptk');
+
+        //load mhs profile data
+        $data['profile'] = $this->ptk->getProfileData($this->session->tempdata('user_id'));
+
+        //load page content
+        $data['contents'] = APPPATH . "views/ptk/ptk_tambahsaldo.php";
+
+        $this->load->view('ptk/home', ['data' => $data]);
+    }
+
 }

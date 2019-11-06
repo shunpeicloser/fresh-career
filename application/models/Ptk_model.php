@@ -29,4 +29,30 @@ class Ptk_model extends CI_Model{
         }
     }
 
+    public function chooseBidder($project_id, $user_id)
+    {
+        $this->db->where('project_id', $project_id)
+                ->where('user_id', $user_id)
+                ->update('project_bidder', ['bid_status' => '1']);
+    }
+
+    public function deleteChoosen($project_id, $user_id)
+    {
+        $this->db->where('project_id', $project_id)
+            ->where('user_id', $user_id)
+            ->update('project_bidder', ['bid_status' => '0']);
+    }
+
+    public function addBalance($user_id, $balance)
+    {
+        $current_balance = $this->db->select('saldo')
+                                    ->from('ptk')
+                                    ->where('ptk.user_id', $balance)
+                                    ->get()->result_array();
+        $new_balance = strval(intval($current_balance) + $balance);
+
+        $this->db->where('user_id', $user_id)
+                ->update('ptk', ['saldo' => $new_balance]);
+    }
+
 }
